@@ -9,7 +9,7 @@ Examples are going to be ported to 3DS as well, while currently the hello world 
 
 ![sine wave fitting on 3DS](/screenshots/hello_world.jpg)
 
-Note:
-    - To run the binary of the example, you will need a homebrew capable 3DS.
-    - Check [my blog article](http://vgao.ddns.net/wordpress/2022/01/12/build-tensorflow-lite-micro-for-nintendo-3ds/) for more details.
+###Note:
+- To run the binary of the example, you will need a homebrew capable 3DS.
+- Check [my blog article](http://vgao.ddns.net/wordpress/2022/01/12/build-tensorflow-lite-micro-for-nintendo-3ds/) for more details.
 
