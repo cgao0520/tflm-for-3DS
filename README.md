@@ -15,7 +15,7 @@ The hello world example which demonstrates the sine wave fitting has been fully 
 ### [micro speech]
 The micro speech example which recoginizes **yes**, **no**, **unknown sound**, and **silent environment**, has also been ported. The following is a screenshot during testing. Also check the demonstration footage, [micro_speech.mov](/screenshots/micro_speech.mov), in screenshots folder.
 
-![micro speech on 3DS](/screenshots/micro_speech.png)
+![micro speech on 3DS](/screenshots/micro_speech.jpg)
 
 ### Note:
 - To run the binary of the example, you will need a homebrew capable 3DS.
