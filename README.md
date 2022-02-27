@@ -17,6 +17,11 @@ The micro speech example which recoginizes **yes**, **no**, **unknown sound**, a
 
 ![micro speech on 3DS](/screenshots/micro_speech.jpg)
 
+### [person detection]
+The person detection example has been now ported. The following is a screenshot during testing. Also check the demonstration footage, [person_detection.mp4](/screenshots/person_detection.mp4), in screenshots folder.
+
+![person detection on 3DS](/screenshots/person_detection.jpg)
+
 ### Note:
 - To run the binary of the example, you will need a homebrew capable 3DS.
 - Check [my blog article](http://vgao.ddns.net/wordpress/2022/01/12/build-tensorflow-lite-micro-for-nintendo-3ds/) for more details.
