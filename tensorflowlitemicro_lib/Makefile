@@ -30,10 +30,13 @@ INCDIR		:=	. \
 				tensorflow/lite/micro \
 				tensorflow/lite/micro/kernels \
 				tensorflow/lite/micro/memory_planner \
-				tensorflow/lite/micro/models \
 				tensorflow/lite/schema
+
 INCLUDE		:=	$(foreach dir,$(INCDIR),-I$(SRCDIR)/$(dir))
 
+# Source files that are not a part of lib
+EXCLUDE_CC_SRC	:= \
+				$(wildcard $(SRCDIR)/tensorflow/lite/micro/models/*.cc)
 
 #---------------------------------------------------------------------------------
 # Build flags
@@ -41,7 +44,7 @@ INCLUDE		:=	$(foreach dir,$(INCDIR),-I$(SRCDIR)/$(dir))
 ARCH		:=	-march=armv6k -mtune=mpcore -mfloat-abi=hard -mtp=soft
 CCFLAG_3DS	:=  -mword-relocations \
 				-fomit-frame-pointer -ffunction-sections \
-				$(ARCH)
+				$(ARCH) -DARM11 -D_3DS
 
 STATIC_MEM	:=	#-DTF_LITE_STATIC_MEMORY
 OPT_LEVEL	:=	-O3
@@ -51,7 +54,7 @@ CC_WARNINGS :=	-Wsign-compare -Wdouble-promotion \
                	-Wunused-function -Wswitch -Wvla
 
 CCFLAGS  	:= 	$(STATIC_MEM) $(CC_WARNINGS) $(OPT_LEVEL) $(CCFLAG_3DS) $(INCLUDE) \
-				 -DARM11 -D_3DS
+
 CXXFLAGS 	:= 	$(CCFLAGS) -Wstrict-aliasing \
 				-fno-rtti -fno-exceptions -std=gnu++11
 ASFLAGS		:=	$(ARCH)
@@ -61,6 +64,9 @@ ASFLAGS		:=	$(ARCH)
 #---------------------------------------------------------------------------------
 CC_SRC		:= $(shell find $(SRCDIR) -type f -name *.cc)
 C_SRC		:= $(shell find $(SRCDIR) -type f -name *.c)
+
+# Exclude source files that are not being built into lib
+CC_SRC := $(filter-out $(EXCLUDE_CC_SRC), $(CC_SRC))
 
 # Example code
 EXAMPLE_SRC	:= $(shell find $(SRCDIR)/$(EXAMPLEDIR) -type f -name *.cc)
